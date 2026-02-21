@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { CampusConfig } from "@/lib/types";
 import { useEventState } from "@/hooks/useEventState";
 import Navbar from "@/components/layout/Navbar";
@@ -17,6 +18,7 @@ interface CampusContentProps {
 export default function CampusContent({ campus }: CampusContentProps) {
   const { state, activeEvent, playerUrl, countdownTarget, upcomingEvents, resources } =
     useEventState();
+  const chatVer = useRef(Date.now());
 
   return (
     <>
@@ -39,7 +41,7 @@ export default function CampusContent({ campus }: CampusContentProps) {
               {campus.chatUrl && (
                 <div className="h-[400px] overflow-hidden rounded-xl border border-white/[0.06] lg:h-auto lg:w-[340px] lg:flex-shrink-0">
                   <iframe
-                    src={`${campus.chatUrl}?ver=${Date.now()}`}
+                    src={`${campus.chatUrl}?ver=${chatVer.current}`}
                     title="Live Chat"
                     className="h-full w-full border-0"
                     allow="clipboard-write"
