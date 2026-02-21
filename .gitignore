@@ -1,0 +1,9 @@
+# Reference / working files
+old/
+project-reference/
+project-overview.md
+untitled folder/
+
+# OS files
+.DS_Store
+Thumbs.db
