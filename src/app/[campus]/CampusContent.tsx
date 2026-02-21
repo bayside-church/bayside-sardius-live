@@ -39,7 +39,7 @@ export default function CampusContent({ campus }: CampusContentProps) {
               {campus.chatUrl && (
                 <div className="h-[400px] overflow-hidden rounded-xl border border-white/[0.06] lg:h-auto lg:w-[340px] lg:flex-shrink-0">
                   <iframe
-                    src={campus.chatUrl}
+                    src={`${campus.chatUrl}?ver=${Date.now()}`}
                     title="Live Chat"
                     className="h-full w-full border-0"
                     allow="clipboard-write"

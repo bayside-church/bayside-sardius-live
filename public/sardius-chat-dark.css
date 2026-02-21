@@ -1,54 +1,104 @@
 /*
  * Sardius Chat — Dark Theme Override
- * Load this CSS on your Sardius chat-only sites to match the Bayside Live dark UI.
- * Color palette based on #162233 family.
+ * Bayside Live · Color palette: #162233 family
+ *
+ * Tested against actual Sardius DOM class names:
+ *   .chatContainer, .signInForm, .joinForm,
+ *   .messageContainer, .messageBody, .messageText, .messageHeader,
+ *   .name, .formattedTime, .message-actions, .emoji, .sm-replyText,
+ *   .inputArea, .messageInput, #chatMessageInputTextarea,
+ *   .chatSendButton, .reactions, .sm-chatReaction, .characterLimit,
+ *   .scrollToBottomBtn, .actionBar, .avatar
  */
 
-/* ---- Base ---- */
+
+/* ========================================
+   1. BASE & LAYOUT
+   ======================================== */
+
 body.sardiusLive,
 #sardiusLiveApp {
   background: #0b0e13 !important;
-  color: #e2e8f0 !important;
+  color: #c8d1dc !important;
   font-family: "Inter", system-ui, -apple-system, sans-serif !important;
 }
 
-/* ---- Chat layout container ---- */
-.chatLayout,
-.chatContainer {
+.sardiusLiveRoot {
+  background: #0b0e13 !important;
+}
+
+.chatLayout {
   background: #0b0e13 !important;
   border: none !important;
 }
 
-/* ---- Sign-in / Join form ---- */
+.chatContainer {
+  background: #0b0e13 !important;
+  color: #c8d1dc !important;
+  border: none !important;
+}
+
+.chatComponent,
+#sm-chatComponent {
+  background: #0b0e13 !important;
+}
+
+/* Hide player overlay and unsupported banner */
+.playerOverlay,
+#unsupported {
+  display: none !important;
+}
+
+
+/* ========================================
+   2. SIGN-IN / JOIN FORM
+   ======================================== */
+
 .signInForm {
-  background: transparent !important;
+  background: #0b0e13 !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.signInForm .joinForm {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
 }
 
 .signInForm h2 {
   color: #e2e8f0 !important;
   font-weight: 600 !important;
+  font-size: 18px !important;
 }
 
 .signInForm p {
-  color: rgba(226, 232, 240, 0.5) !important;
+  color: rgba(226, 232, 240, 0.45) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
 }
 
 .signInForm label {
-  color: rgba(226, 232, 240, 0.4) !important;
+  color: rgba(226, 232, 240, 0.35) !important;
   font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
 }
 
 .signInForm .form-control {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 8px !important;
   color: #e2e8f0 !important;
-  padding: 10px 12px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  transition: border-color 200ms ease, box-shadow 200ms ease !important;
 }
 
 .signInForm .form-control:focus {
-  border-color: #1e3a5f !important;
-  box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.3) !important;
+  border-color: rgba(30, 58, 95, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.2) !important;
   outline: none !important;
 }
 
@@ -59,19 +109,22 @@ body.sardiusLive,
   border-radius: 8px !important;
   color: #fff !important;
   font-weight: 600 !important;
+  font-size: 14px !important;
   padding: 10px 20px !important;
-  transition: background 200ms ease !important;
+  cursor: pointer !important;
+  transition: background 200ms ease, box-shadow 200ms ease !important;
 }
 
 .signInForm .btn:hover,
 .signInForm .btn-secondary:hover {
   background: #2a4f7a !important;
+  box-shadow: 0 2px 12px rgba(30, 58, 95, 0.3) !important;
 }
 
-/* ---- Chat messages area ---- */
-.chatComponent {
-  background: #0b0e13 !important;
-}
+
+/* ========================================
+   3. MESSAGE WINDOW
+   ======================================== */
 
 #messageWindow {
   background: #0b0e13 !important;
@@ -81,194 +134,343 @@ body.sardiusLive,
   background: transparent !important;
 }
 
-/* ---- Individual messages ---- */
-.chatMessage,
-.chat-message {
+.messages {
+  background: #0b0e13 !important;
+}
+
+
+/* ========================================
+   4. INDIVIDUAL MESSAGES
+   ======================================== */
+
+/* Message row container */
+.messageContainer,
+#messageWindow > div:not(.spacer) {
+  background: transparent !important;
+  padding: 8px 12px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  transition: background 150ms ease !important;
+}
+
+.messageContainer:hover,
+#messageWindow > div:not(.spacer):hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Message bubble / section (Sardius sets this to near-white) */
+.messageSection,
+.messageSection.normalMsg,
+.messageSectionWrapper {
   background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 10px !important;
-  margin: 4px 8px !important;
+  border-radius: 8px !important;
   padding: 8px 12px !important;
 }
 
-.chatMessage:hover,
-.chat-message:hover {
-  background: rgba(255, 255, 255, 0.07) !important;
+/* Avatar */
+.avatar,
+.chatAvatarContainer .avatar {
+  border-radius: 50% !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
 }
 
-/* Message author name */
-.chatMessage .username,
-.chatMessage .displayName,
-.chat-message .username,
-.chat-message .displayName {
+/* Username */
+.name,
+.name-first,
+.name-last,
+.displayName {
   color: #7ba3cc !important;
   font-weight: 600 !important;
   font-size: 13px !important;
 }
 
-/* Moderator name */
-.chatMessage .moderator .username,
-.chatMessage .moderator .displayName {
-  color: #1e3a5f !important;
+/* Timestamp */
+.formattedTime {
+  color: rgba(226, 232, 240, 0.25) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
 }
 
-/* Message text */
-.chatMessage .messageText,
-.chatMessage .message-text,
-.chat-message .messageText,
-.chat-message .message-text,
-.chatMessage p,
-.chat-message p {
-  color: rgba(226, 232, 240, 0.75) !important;
+/* Message body text */
+.messageBody p,
+.messageText p,
+.messageText,
+.messageSection p,
+.messageSectionWrapper p,
+.message p {
+  color: rgba(226, 232, 240, 0.8) !important;
   font-size: 14px !important;
+  font-weight: 400 !important;
   line-height: 1.5 !important;
 }
 
-/* Timestamp */
-.chatMessage .timestamp,
-.chat-message .timestamp {
-  color: rgba(226, 232, 240, 0.25) !important;
-  font-size: 11px !important;
+/* Message header row */
+.messageHeader,
+.messageHeaderElements {
+  color: inherit !important;
 }
 
-/* ---- Chat input area ---- */
-.chatInput,
-.chat-input,
-.messageInput {
-  background: rgba(255, 255, 255, 0.04) !important;
+
+/* ========================================
+   5. MESSAGE ACTIONS (per-message hover)
+   ======================================== */
+
+.message-actions {
+  background: transparent !important;
+}
+
+/* Inline emoji reactions on each message */
+.message-actions .emoji,
+.messageReactions .emoji,
+.sm-chatReactionEmjoi {
+  color: inherit !important;
+  opacity: 0.5 !important;
+  transition: opacity 150ms ease !important;
+  cursor: pointer !important;
+}
+
+.message-actions .emoji:hover,
+.messageReactions .emoji:hover,
+.sm-chatReactionEmjoi:hover {
+  opacity: 1 !important;
+}
+
+/* Reply link */
+.sm-replyText {
+  color: rgba(226, 232, 240, 0.3) !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: color 150ms ease !important;
+}
+
+.sm-replyText:hover {
+  color: rgba(226, 232, 240, 0.7) !important;
+}
+
+/* Emoji/reply separator */
+.message-actions .separator {
+  color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Action bar wrapper */
+.actionBar {
+  background: transparent !important;
+  color: rgba(226, 232, 240, 0.3) !important;
+}
+
+/* Reaction counters on messages */
+.sm-chatReaction {
+  color: rgba(226, 232, 240, 0.4) !important;
+}
+
+.sm-chatReactionButton {
+  background: transparent !important;
+  border: none !important;
+}
+
+
+/* ========================================
+   6. GLOBAL REACTION BAR (bottom)
+   ======================================== */
+
+.reactions,
+.withoutReactions {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* The pill container wrapping the emoji reactions */
+.reactions .actions {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 50px !important;
+}
+
+.sm-reaction-0,
+.sm-reaction-1,
+.sm-reaction-2,
+.sm-reaction-3 {
+  color: rgba(226, 232, 240, 0.5) !important;
+}
+
+/* Reaction count dots */
+.reactions .total,
+.reactions .count {
+  color: rgba(226, 232, 240, 0.3) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  font-size: 10px !important;
+}
+
+/* Hide zero counts for cleaner look */
+.reactions .noCount .total {
+  opacity: 0.4 !important;
+}
+
+
+/* ========================================
+   7. CHAT INPUT AREA
+   ======================================== */
+
+.inputArea {
+  background: rgba(255, 255, 255, 0.02) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
-.chatInput input,
-.chatInput textarea,
-.chat-input input,
-.chat-input textarea,
-.messageInput input,
-.messageInput textarea {
-  background: rgba(255, 255, 255, 0.06) !important;
+.messageInput,
+.textInput {
+  background: transparent !important;
+}
+
+#chatMessageInputTextarea,
+.messageInput textarea,
+.messageInput .form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 8px !important;
   color: #e2e8f0 !important;
   font-size: 14px !important;
+  padding: 10px 14px !important;
+  resize: none !important;
+  transition: border-color 200ms ease !important;
 }
 
-.chatInput input:focus,
-.chatInput textarea:focus,
-.chat-input input:focus,
-.chat-input textarea:focus,
-.messageInput input:focus,
-.messageInput textarea:focus {
-  border-color: #1e3a5f !important;
-  box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.3) !important;
+#chatMessageInputTextarea:focus,
+.messageInput textarea:focus,
+.messageInput .form-control:focus {
+  border-color: rgba(30, 58, 95, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.15) !important;
   outline: none !important;
 }
 
-.chatInput input::placeholder,
-.chatInput textarea::placeholder,
-.chat-input input::placeholder,
-.chat-input textarea::placeholder {
-  color: rgba(226, 232, 240, 0.25) !important;
+#chatMessageInputTextarea::placeholder,
+.messageInput textarea::placeholder {
+  color: rgba(226, 232, 240, 0.2) !important;
+}
+
+/* Character limit counter */
+.characterLimit {
+  color: rgba(226, 232, 240, 0.2) !important;
+  font-size: 11px !important;
 }
 
 /* Send button */
-.chatInput button[type="submit"],
-.chat-input button[type="submit"],
-.sendButton,
-.send-button {
+.chatSendButton {
   background: #1e3a5f !important;
   border: none !important;
   border-radius: 8px !important;
   color: #fff !important;
+  cursor: pointer !important;
   transition: background 200ms ease !important;
 }
 
-.chatInput button[type="submit"]:hover,
-.chat-input button[type="submit"]:hover,
-.sendButton:hover,
-.send-button:hover {
+.chatSendButton:hover {
   background: #2a4f7a !important;
 }
 
-/* ---- Reactions ---- */
-.reactions,
-.reaction-bar {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+.chatSendButton svg {
+  fill: #fff !important;
+  color: #fff !important;
 }
 
-.reaction-button,
-.reactionBtn {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 6px !important;
-  transition: background 200ms ease !important;
-}
 
-.reaction-button:hover,
-.reactionBtn:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-}
+/* ========================================
+   8. SCROLL TO BOTTOM BUTTON
+   ======================================== */
 
-/* ---- Tabs (Chat / Q&A) ---- */
-.tab-content {
+.scrollToBottom {
   background: transparent !important;
 }
 
-.nav-tabs,
-.tab-nav,
-#chat-tabs {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-.nav-tabs .nav-link,
-.tab-nav button {
-  color: rgba(226, 232, 240, 0.4) !important;
-  background: transparent !important;
-  border: none !important;
-}
-
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link:hover,
-.tab-nav button.active,
-.tab-nav button:hover {
-  color: #e2e8f0 !important;
-  border-bottom: 2px solid #1e3a5f !important;
-}
-
-/* ---- Scroll to bottom button ---- */
 .scrollToBottomBtn {
   background: #1e3a5f !important;
   border: none !important;
   border-radius: 50% !important;
   color: #fff !important;
   box-shadow: 0 2px 12px rgba(30, 58, 95, 0.4) !important;
+  cursor: pointer !important;
+  transition: background 200ms ease !important;
 }
 
 .scrollToBottomBtn:hover {
   background: #2a4f7a !important;
 }
 
-.scrollToBottomBtn svg {
-  color: #fff !important;
-}
-
+.scrollToBottomBtn svg,
 .scrollToBottomBtn svg .cls-1 {
+  color: #fff !important;
   stroke: #fff !important;
 }
 
-/* ---- Polls ---- */
-.sardiusPolls {
+
+/* ========================================
+   9. TABS (Chat / Q&A / Mod)
+   ======================================== */
+
+.tab-content {
   background: transparent !important;
 }
 
-/* ---- Modal overlay ---- */
-.sm-modal {
-  background: rgba(11, 14, 19, 0.8) !important;
+#chat-tabs {
+  background: transparent !important;
 }
 
-/* ---- Scrollbar ---- */
+.tab-pane {
+  background: transparent !important;
+}
+
+
+/* ========================================
+   10. MODALS
+   ======================================== */
+
+.sm-modal,
+.sm-modalGlobal {
+  background: rgba(11, 14, 19, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.modalContent {
+  background: #12161d !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  color: #e2e8f0 !important;
+}
+
+.modalTitle {
+  color: #e2e8f0 !important;
+}
+
+.sm-modalSuccess {
+  background: #12161d !important;
+  color: #e2e8f0 !important;
+}
+
+
+/* ========================================
+   11. POLLS
+   ======================================== */
+
+.sardiusPolls,
+.sardiusNoPolls {
+  background: transparent !important;
+}
+
+
+/* ========================================
+   12. OTT LOGIN GATE
+   ======================================== */
+
+.sm-ottLogin {
+  background: transparent !important;
+}
+
+
+/* ========================================
+   13. SCROLLBAR
+   ======================================== */
+
 #messageWindow::-webkit-scrollbar {
-  width: 6px !important;
+  width: 5px !important;
 }
 
 #messageWindow::-webkit-scrollbar-track {
@@ -276,15 +478,102 @@ body.sardiusLive,
 }
 
 #messageWindow::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
   border-radius: 3px !important;
 }
 
 #messageWindow::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* ---- Hide elements not needed in embed ---- */
-.sardiusLive > #unsupported {
-  display: none !important;
+
+/* ========================================
+   14. MISC & POLISH
+   ======================================== */
+
+/* Remove any white borders/outlines from form elements */
+.chatContainer *:focus {
+  outline: none !important;
+}
+
+/* Ensure all text inherits light color */
+.chatLayout,
+.chatLayout * {
+  color: inherit;
+}
+
+/* Fix specificity: force light text on elements Sardius sets inline */
+.chatContainer .name,
+.chatContainer .name-first,
+.chatContainer .name-last {
+  color: #7ba3cc !important;
+}
+
+.chatContainer .formattedTime {
+  color: rgba(226, 232, 240, 0.25) !important;
+}
+
+.chatContainer .messageBody p,
+.chatContainer .messageText,
+.chatContainer .messageSection p {
+  color: rgba(226, 232, 240, 0.8) !important;
+}
+
+.chatContainer .message-actions,
+.chatContainer .message-actions * {
+  color: rgba(226, 232, 240, 0.3) !important;
+}
+
+.chatContainer .message-actions *:hover {
+  color: rgba(226, 232, 240, 0.6) !important;
+}
+
+/* Drawer content (reply thread, etc.) */
+.drawerContent {
+  background: #12161d !important;
+  color: #e2e8f0 !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Close button in drawers/modals */
+.close,
+.closeContainer {
+  color: rgba(226, 232, 240, 0.4) !important;
+}
+
+.close:hover,
+.closeContainer:hover {
+  color: #e2e8f0 !important;
+}
+
+/* Fixed container overlays */
+.fixedContainer {
+  background: transparent !important;
+}
+
+/* Emoji wrapper in message actions */
+.emojiWrapper {
+  background: transparent !important;
+}
+
+.emojiWrapper .emoji {
+  cursor: pointer !important;
+}
+
+/* Reply icon SVG */
+.sm-replyIcon,
+.sm-replyIcon path {
+  fill: rgba(226, 232, 240, 0.2) !important;
+  transition: fill 150ms ease !important;
+}
+
+.message-actions:hover .sm-replyIcon,
+.message-actions:hover .sm-replyIcon path {
+  fill: rgba(226, 232, 240, 0.5) !important;
+}
+
+/* Send icon in send button */
+.planeIcon,
+.planeIcon path {
+  fill: #fff !important;
 }
