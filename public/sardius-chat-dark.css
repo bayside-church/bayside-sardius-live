@@ -1,0 +1,290 @@
+/*
+ * Sardius Chat — Dark Theme Override
+ * Load this CSS on your Sardius chat-only sites to match the Bayside Live dark UI.
+ * Color palette based on #162233 family.
+ */
+
+/* ---- Base ---- */
+body.sardiusLive,
+#sardiusLiveApp {
+  background: #0b0e13 !important;
+  color: #e2e8f0 !important;
+  font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+}
+
+/* ---- Chat layout container ---- */
+.chatLayout,
+.chatContainer {
+  background: #0b0e13 !important;
+  border: none !important;
+}
+
+/* ---- Sign-in / Join form ---- */
+.signInForm {
+  background: transparent !important;
+}
+
+.signInForm h2 {
+  color: #e2e8f0 !important;
+  font-weight: 600 !important;
+}
+
+.signInForm p {
+  color: rgba(226, 232, 240, 0.5) !important;
+}
+
+.signInForm label {
+  color: rgba(226, 232, 240, 0.4) !important;
+  font-size: 12px !important;
+}
+
+.signInForm .form-control {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  color: #e2e8f0 !important;
+  padding: 10px 12px !important;
+}
+
+.signInForm .form-control:focus {
+  border-color: #1e3a5f !important;
+  box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.3) !important;
+  outline: none !important;
+}
+
+.signInForm .btn,
+.signInForm .btn-secondary {
+  background: #1e3a5f !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  transition: background 200ms ease !important;
+}
+
+.signInForm .btn:hover,
+.signInForm .btn-secondary:hover {
+  background: #2a4f7a !important;
+}
+
+/* ---- Chat messages area ---- */
+.chatComponent {
+  background: #0b0e13 !important;
+}
+
+#messageWindow {
+  background: #0b0e13 !important;
+}
+
+#messageWindow .spacer {
+  background: transparent !important;
+}
+
+/* ---- Individual messages ---- */
+.chatMessage,
+.chat-message {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 10px !important;
+  margin: 4px 8px !important;
+  padding: 8px 12px !important;
+}
+
+.chatMessage:hover,
+.chat-message:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Message author name */
+.chatMessage .username,
+.chatMessage .displayName,
+.chat-message .username,
+.chat-message .displayName {
+  color: #7ba3cc !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+/* Moderator name */
+.chatMessage .moderator .username,
+.chatMessage .moderator .displayName {
+  color: #1e3a5f !important;
+}
+
+/* Message text */
+.chatMessage .messageText,
+.chatMessage .message-text,
+.chat-message .messageText,
+.chat-message .message-text,
+.chatMessage p,
+.chat-message p {
+  color: rgba(226, 232, 240, 0.75) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Timestamp */
+.chatMessage .timestamp,
+.chat-message .timestamp {
+  color: rgba(226, 232, 240, 0.25) !important;
+  font-size: 11px !important;
+}
+
+/* ---- Chat input area ---- */
+.chatInput,
+.chat-input,
+.messageInput {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.chatInput input,
+.chatInput textarea,
+.chat-input input,
+.chat-input textarea,
+.messageInput input,
+.messageInput textarea {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  color: #e2e8f0 !important;
+  font-size: 14px !important;
+}
+
+.chatInput input:focus,
+.chatInput textarea:focus,
+.chat-input input:focus,
+.chat-input textarea:focus,
+.messageInput input:focus,
+.messageInput textarea:focus {
+  border-color: #1e3a5f !important;
+  box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.3) !important;
+  outline: none !important;
+}
+
+.chatInput input::placeholder,
+.chatInput textarea::placeholder,
+.chat-input input::placeholder,
+.chat-input textarea::placeholder {
+  color: rgba(226, 232, 240, 0.25) !important;
+}
+
+/* Send button */
+.chatInput button[type="submit"],
+.chat-input button[type="submit"],
+.sendButton,
+.send-button {
+  background: #1e3a5f !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+  transition: background 200ms ease !important;
+}
+
+.chatInput button[type="submit"]:hover,
+.chat-input button[type="submit"]:hover,
+.sendButton:hover,
+.send-button:hover {
+  background: #2a4f7a !important;
+}
+
+/* ---- Reactions ---- */
+.reactions,
+.reaction-bar {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.reaction-button,
+.reactionBtn {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 6px !important;
+  transition: background 200ms ease !important;
+}
+
+.reaction-button:hover,
+.reactionBtn:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ---- Tabs (Chat / Q&A) ---- */
+.tab-content {
+  background: transparent !important;
+}
+
+.nav-tabs,
+.tab-nav,
+#chat-tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.nav-tabs .nav-link,
+.tab-nav button {
+  color: rgba(226, 232, 240, 0.4) !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover,
+.tab-nav button.active,
+.tab-nav button:hover {
+  color: #e2e8f0 !important;
+  border-bottom: 2px solid #1e3a5f !important;
+}
+
+/* ---- Scroll to bottom button ---- */
+.scrollToBottomBtn {
+  background: #1e3a5f !important;
+  border: none !important;
+  border-radius: 50% !important;
+  color: #fff !important;
+  box-shadow: 0 2px 12px rgba(30, 58, 95, 0.4) !important;
+}
+
+.scrollToBottomBtn:hover {
+  background: #2a4f7a !important;
+}
+
+.scrollToBottomBtn svg {
+  color: #fff !important;
+}
+
+.scrollToBottomBtn svg .cls-1 {
+  stroke: #fff !important;
+}
+
+/* ---- Polls ---- */
+.sardiusPolls {
+  background: transparent !important;
+}
+
+/* ---- Modal overlay ---- */
+.sm-modal {
+  background: rgba(11, 14, 19, 0.8) !important;
+}
+
+/* ---- Scrollbar ---- */
+#messageWindow::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+#messageWindow::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#messageWindow::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 3px !important;
+}
+
+#messageWindow::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ---- Hide elements not needed in embed ---- */
+.sardiusLive > #unsupported {
+  display: none !important;
+}
