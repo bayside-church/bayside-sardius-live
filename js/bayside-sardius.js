@@ -19,7 +19,8 @@
     'Bayside Adventure':       { code: 'AD',  slug: 'adventurelive',    label: 'Adventure',       onDemand: 'https://adventure.baysideonline.com/services/' },
     'Bayside Santa Rosa':      { code: 'SR',  slug: 'santarosalive',    label: 'Santa Rosa',      onDemand: 'https://santarosa.baysideonline.com/services/' },
     'Bayside Orange County':   { code: 'OC',  slug: 'orangecountylive', label: 'Orange County',   onDemand: 'https://orangecounty.baysideonline.com/services/' },
-    'Bayside Auburn':          { code: 'AB',  slug: 'auburnlive',       label: 'Auburn',          onDemand: 'https://auburn.baysideonline.com/services/' }
+    'Bayside Auburn':          { code: 'AB',  slug: 'auburnlive',       label: 'Auburn',          onDemand: 'https://auburn.baysideonline.com/services/' },
+    'Test Bayside Livestream':  { code: 'BO',  slug: 'testbaysidelivestream', label: 'Test (Blue Oaks)', onDemand: 'https://blueoaks.baysideonline.com/services/' }
   };
 
   var CALENDAR_API = 'https://api.prod-api.sardius.media/calendars/005aD180855507C/all/sites';
