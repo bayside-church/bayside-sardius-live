@@ -511,11 +511,13 @@ svg.leftTriangle {
 
 /* Reaction button (the clickable area) */
 .sm-chatReactionButton,
+.sm-chatReactionEmjoi,
 [class*="hlmtiL"],
 .sc-iHbSHJ {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
+  color: #e2e8f0 !important;
 }
 
 /* THE count badge — was lightblue, needs to be subtle dark */
@@ -593,7 +595,8 @@ svg.leftTriangle {
   background-color: transparent !important;
 }
 
-/* Text input / textarea */
+/* Text input / textarea — include bare `textarea` for browser default override */
+textarea,
 #chatMessageInputTextarea,
 .messageInput textarea,
 .messageInput .form-control,
@@ -856,7 +859,7 @@ button.chatSendButton,
 
 
 /* ========================================
-   15. DRAWER / THREAD VIEW
+   15. DRAWER / THREAD VIEW & REPLY
    ======================================== */
 
 .drawerContent,
@@ -864,6 +867,40 @@ button.chatSendButton,
   background: #12161d !important;
   color: #e2e8f0 !important;
   border-left: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Reply-to preview bar (sc-JrDLc / .hOyvNw) — was rgb(247,248,250) white */
+.replyMessage,
+div.replyMessage,
+[class*="hOyvNw"],
+.sc-JrDLc {
+  background: #12161d !important;
+  background-color: #12161d !important;
+  color: #e2e8f0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.replyMessage .name,
+.replyMessage .name-first,
+.replyMessage .name-last,
+.replyMessage .displayName,
+[class*="hOyvNw"] .name {
+  color: #7ba3cc !important;
+}
+
+.replyMessage p,
+.replyMessage .messageText,
+[class*="hOyvNw"] p {
+  color: rgba(226, 232, 240, 0.7) !important;
+}
+
+/* Reply close/cancel button */
+.replyMessage .close,
+.replyMessage .closeReply,
+[class*="hOyvNw"] .close,
+[class*="hOyvNw"] svg path {
+  fill: rgba(226, 232, 240, 0.4) !important;
+  color: rgba(226, 232, 240, 0.4) !important;
 }
 
 /* Close button in drawers/modals */
@@ -1118,4 +1155,20 @@ button.chatSendButton,
 /* .YTLiW = emojiWrapper hash */
 .message:hover .YTLiW {
   background-color: transparent !important;
+}
+
+/* .hOyvNw = replyMessage hash (sc-JrDLc) — was rgb(247,248,250) */
+.hOyvNw {
+  background-color: #12161d !important;
+  color: #e2e8f0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.hOyvNw .name,
+.hOyvNw .displayName {
+  color: #7ba3cc !important;
+}
+
+.hOyvNw p {
+  color: rgba(226, 232, 240, 0.7) !important;
 }
